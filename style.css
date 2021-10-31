@@ -1,0 +1,268 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+::selection {
+  color: #ffff;
+  background: var(--primary-color);
+}
+
+body {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  padding: 10px;
+  background: var(--bg-image);
+  background-size: 100%;
+}
+
+
+
+
+
+.theme-dark {
+  --bg-image: url(https://images.pexels.com/photos/1287145/pexels-photo-1287145.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260) no-repeat;
+  --primary-color: #f3669c;
+}
+
+.theme-light {
+  --bg-image: url(https://images.pexels.com/photos/2835436/pexels-photo-2835436.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260) no-repeat;
+  --primary-color: #4959e8;
+}
+
+
+
+.theme-block {
+  margin: 90px auto 0 10px;
+}
+
+.theme-block #theme {
+  display: none;
+}
+
+.theme-block #theme {
+  display: none;
+}
+
+.theme-block #theme + label::before {
+  content: '';
+  background: url(./icon-sun.svg);
+  display: block;
+  width: 26px;
+  height: 26px;
+  cursor: pointer;
+}
+
+.theme-block #theme:checked + label::before {
+  background: url(./icon-moon.svg);
+}
+
+
+
+
+
+.flex-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.wrapper {
+  background: #fff;
+  max-width: 400px;
+  width: 100%;
+  margin: 0 20px 0 auto;
+  padding: 25px;
+  border-radius: 5px;
+  box-shadow: 0px 10px 15px rgba(0,0,0,0.1);
+}
+
+.wrapper header {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.wrapper h1 {
+  font-size: 30px;
+  font-weight: 600;
+  margin-right: 120px;
+}
+
+.deleteAll {
+  padding: 6px;
+  border-radius: 3px;
+  border: none;
+  outline: none;
+  color: var(--primary-color);
+  font-weight: 400;
+  font-size: 28px;
+  margin-left: 5px;
+  background: transparent;
+  cursor: pointer;
+  user-select: none;
+  opacity: 0.6;
+  pointer-events: none;
+  transition: 0.3s ease;
+}
+
+.deleteAll.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.wrapper .inputField {
+  margin: 20px 0;
+  width: 100%;
+  display: flex;
+  height: 45px;
+}
+
+.inputField input {
+  width: 85%;
+  height: 100%;
+  outline: none;
+  border: none;
+  border-bottom: 1.5px solid #ccc;
+  font-size: 17px;
+  padding-left: 15px;
+  transform-origin: left;
+  transition: 150ms ease-in-out;
+}
+
+.inputField input:focus {
+  border-color: var(--primary-color);
+  transform: scaleX(1);
+}
+
+.inputField button {
+  width: 50px;
+  height: 100%;
+  border: none;
+  color: var(--primary-color);
+  font-size: 28px;
+  outline: none;
+  background: transparent;
+  cursor: pointer;
+  opacity: 0.6;
+  pointer-events: none;
+  transition: 0.3s ease;
+}
+
+.inputField button.active {
+  color: var(--primary-color);
+  opacity: 1;
+}
+
+.wrapper .todoList {
+  height: 350px;
+  overflow-y: auto;
+  margin-top: 20px;
+}
+
+.todoList li {
+  position: relative;
+  list-style: none;
+  height: 45px;
+  line-height: 45px;
+  margin-bottom: 8px;
+  background: #f2f2f2;
+  border-radius: 3px;
+  padding: 0 15px;
+  cursor: default;
+  overflow: hidden;
+  transform-origin: right;
+  transition: 150ms ease-in-out;
+}
+
+.todoList li span {
+  position: absolute;
+  right: -45px;
+  background: #e74c3c;
+  width: 45px;
+  text-align: center;
+  color: #fff;
+  border-radius: 0 3px 3px 0;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.todoList li:hover span {
+  right: 0px;
+}
+
+
+
+
+
+.notelines {
+  margin: 0 auto 0 20px;
+  background: url(./notepad-lines.png) repeat;
+  background-color: whitesmoke;
+  background-size: 100%;
+  border-radius: 5px;
+}
+
+.notepad {
+  padding: 5px 10px 5px 55px;
+  font-size: 16px;
+  outline: none;
+}
+
+.notelines, .notepad {
+  width: 400px;
+  height: 555px;
+}
+
+
+
+
+
+
+.date-time {
+  background-color: rgb(3, 9, 15);
+  color: rgb(250, 244, 239);
+
+  width: 300px;
+  padding: 20px;
+  margin: 40px 10px 40px auto;
+  text-align: center;
+  border: 1px solid var(--primary-color);
+  border-radius: 60px; /*updateGH*/
+  transition: 0.5s;
+  transition-property: background, box-shadow;
+}
+
+.date-time:hover {
+  background: var(--primary-color);
+  box-shadow: 0 0 30px var(--primary-color);
+}
+
+.time {
+  /* font-family: Varela Round; */
+  font-size: 40px;
+}
+
+.time span:not(:last-child) {
+  /* font-family: Advent Pro; CHANGE!!! */
+  font-weight: 600;
+  letter-spacing: 8px;
+}
+
+.time span:last-child {
+  background-color: var(--primary-color);
+  font-size: 30px;
+  padding: 0 5px;
+  border-radius: 3px;
+}
+
+.date {
+  font-size: 18px;
+  margin-top: 5px;
+  letter-spacing: 0.5px;
+}
