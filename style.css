@@ -201,6 +201,12 @@ body {
   right: 0px;
 }
 
+/* error */
+.inputField input.error, .inputField button.error {
+  color: red;
+  border-color: red;
+  opacity: 1;
+}
 
 
 
