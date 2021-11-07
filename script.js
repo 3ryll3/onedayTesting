@@ -57,12 +57,13 @@ const theme = document.getElementById('theme');
 
 // Theme changer
 theme.addEventListener('click', () => {
+    // if checked, active theme-dark : if not, default theme-light
     document.querySelector('body').classList = [theme.checked ? 'theme-dark' : 'theme-light'];
 });
 
 // Inputbox Onkeyup event
 inputBox.onkeyup = ()=>{
-    let userData = inputBox.value; // getting user entered value
+    let userTask = inputBox.value; // getting user entered value
     let getLocalStorage = localStorage.getItem("OneDay | To Do"); // getting localStorage
     if(getLocalStorage == null){ // if localStorage has no data
         listArr = []; // create a blank array
@@ -71,15 +72,15 @@ inputBox.onkeyup = ()=>{
     }
     
     // (CSS: addBtn)
-    if(userData.length > 0){ // if user values aren't only spaces
+    if(userTask.length > 0){ // if user entered value is greater than 0
         addBtn.classList.add("active"); // active the add button
     }else{
         addBtn.classList.remove("active"); // unactive the add button
     }
     
-    // if enter key is pressed & user entered value is greater than 0
-    if (event.keyCode == 13 && userData.length > 0) {
-        listArr.push(userData); // pushing or adding new value in array
+    // Add Task function (localStorage)
+    if (event.keyCode == 13 && userTask.trim() != 0) { // if enter key is pressed & user entered value isn't only spaces
+        listArr.push(userTask); // pushing or adding new value in array
         localStorage.setItem("OneDay | To Do", JSON.stringify(listArr)); // transforming js object into a json string
         showTasks(); // calling showTasks function
         addBtn.classList.remove("active"); // unactive the add button once the task added
@@ -88,7 +89,7 @@ inputBox.onkeyup = ()=>{
 
 showTasks(); // calling showTasks function
 
-// Add Task function
+// Show Tasks function
 function showTasks(){
     let getLocalStorage = localStorage.getItem("OneDay | To Do"); // getting localStorage
     if(getLocalStorage == null){ // if localStorage has no data
@@ -98,8 +99,8 @@ function showTasks(){
     }
     
     // Show '# tasks left'
-    const pendingNumb = document.querySelector(".pendingNumb");
-    pendingNumb.textContent = listArr.length; // passing the array length value in pendingNumb
+    const remainingTasks = document.querySelector(".remainingTasks");
+    remainingTasks.textContent = listArr.length; // passing the array length value in remainingTasks
 
     // (CSS: deleteAllBtn)
     if(listArr.length > 0){ // if array length is greater than 0
@@ -108,12 +109,12 @@ function showTasks(){
         deleteAllBtn.classList.remove("active"); // unactive the delete all button
     }
 
-    // adding new li tag inside ul tag
+    // Add Task function (HTML)
     let newLiTag = '';
     listArr.forEach((element, index) => {
         newLiTag += `<li> ${element} <span onclick="deleteTask(${index})"; ><i class="fas fa-trash"></i></span></li>`;
     });
-    todoList.innerHTML = newLiTag;
+    todoList.innerHTML = newLiTag; // adding new li tag inside ul tag
     inputBox.value = ""; // once task added leave the input field blank
 }
 
@@ -130,11 +131,11 @@ function deleteTask(index){
 
 // Delete All Tasks function
 deleteAllBtn.onclick = ()=>{
-    let getLocalStorageData = localStorage.getItem("OneDay | To Do"); // getting localStorage
-    if(getLocalStorageData == null){ // if localStorage has no data
+    let getLocalStorage = localStorage.getItem("OneDay | To Do"); // getting localStorage
+    if(getLocalStorage == null){ // if localStorage has no data
         listArr = []; // create a blank array
     }else{
-        listArr = JSON.parse(getLocalStorageData); // transforming json string into a js object
+        listArr = JSON.parse(getLocalStorage); // transforming json string into a js object
         listArr = []; // create a blank array
     }
 
@@ -145,22 +146,26 @@ deleteAllBtn.onclick = ()=>{
 
 
 
+
+// Notepad function
 function notepad() {
-    var userNotes = 'OneDay | Notes';
-    var notepad = document.getElementById('notepad');
-    var cache = localStorage.getItem(userNotes);
+    let notepad = document.getElementById('notepad'); // selecting notepad div
+    let getLocalStorage = localStorage.getItem("OneDay | Notes"); // getting localStorageNotes
 
-    if (cache) {
-        notepad.innerHTML = cache;
+    if (getLocalStorage) { // if localStorageNotes has no data
+        notepad.innerHTML = getLocalStorage; // set localStorageNotes to text in notepad
     }
-
+    
+    // Autosave function
     function autosave() {
-        var newValue = notepad.innerHTML;
-        if (cache != newValue) {
-            cache = newValue;
-            localStorage.setItem(userNotes, cache);
+        let newValue = notepad.innerHTML; // setting newValue to text in notepad
+        if (getLocalStorage != newValue) { // if localStorageNotes is not equal to newValue
+            getLocalStorage = newValue; // set localStorageNotes to newValue
+            localStorage.setItem("OneDay | Notes", getLocalStorage); // update localStorage
         }
     }
 
-    notepad.addEventListener('input', autosave);
+    notepad.addEventListener('input', autosave); // calling autosave function when user edits notepad
 }
+
+notepad() // calling notepad function
