@@ -71,19 +71,38 @@ inputBox.onkeyup = ()=>{
         listArr = JSON.parse(getLocalStorage); // transforming json string into a js object
     }
     
-    // (CSS: addBtn)
-    if(userTask.length > 0){ // if user entered value is greater than 0
+    // if user entered value isn't only spaces
+    if(userTask.trim() != 0){
+        
+        // (CSS: addBtn)
         addBtn.classList.add("active"); // active the add button
+
+        // if user entered value is less than or equal to 30
+        if(userTask.length <= 30){
+
+            // Add Task function (localStorage)
+            if(event.keyCode == 13){ // if enter key is pressed
+                listArr.push(userTask); // pushing or adding new value in array
+                localStorage.setItem("OneDay | To Do", JSON.stringify(listArr)); // transforming js object into a json string
+                showTasks(); // calling showTasks function
+                addBtn.classList.remove("active"); // unactive the add button once the task added
+            }
+            addBtn.classList.remove("error"); // unactive error on the add button
+            inputBox.classList.remove("error"); // unactive error on the input box
+        }
+
+        // if user entered value is more than 30
+        else if(userTask.length > 30){
+            if(event.keyCode == 13){ // if enter key is pressed
+                alert("Your task is too long!"); // pop-up alert!
+            }
+            addBtn.classList.add("error"); // active error on the add button
+            inputBox.classList.add("error"); // active error on the input box
+        }
+
     }else{
+        // (CSS: addBtn)
         addBtn.classList.remove("active"); // unactive the add button
-    }
-    
-    // Add Task function (localStorage)
-    if (event.keyCode == 13 && userTask.trim() != 0) { // if enter key is pressed & user entered value isn't only spaces
-        listArr.push(userTask); // pushing or adding new value in array
-        localStorage.setItem("OneDay | To Do", JSON.stringify(listArr)); // transforming js object into a json string
-        showTasks(); // calling showTasks function
-        addBtn.classList.remove("active"); // unactive the add button once the task added
     }
 }
 
