@@ -18,19 +18,20 @@ body {
   overflow: hidden;
   padding: 10px;
   background: var(--bg-image);
-  background-size: 100%;
+  background-size: cover;
+  overflow-y: auto;
 }
 
 
 
 
 
-.theme-dark {
+.theme-light {
   --bg-image: url(https://images.pexels.com/photos/1287145/pexels-photo-1287145.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260) no-repeat;
   --primary-color: #f3669c;
 }
 
-.theme-light {
+.theme-dark {
   --bg-image: url(https://images.pexels.com/photos/2835436/pexels-photo-2835436.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260) no-repeat;
   --primary-color: #4959e8;
 }
@@ -51,7 +52,7 @@ body {
 
 .theme-block #theme + label::before {
   content: '';
-  background: url(./icon-sun.svg);
+  background: url(./images/icon-moon.svg);
   display: block;
   width: 26px;
   height: 26px;
@@ -59,36 +60,40 @@ body {
 }
 
 .theme-block #theme:checked + label::before {
-  background: url(./icon-moon.svg);
+  background: url(./images/icon-sun.svg);
 }
 
 
 
-
+/* div sizes */
+.todo, .notepad {
+  height: 545px;
+  width: 400px;
+}
 
 .flex-container {
   display: flex;
   flex-direction: row;
 }
 
-.wrapper {
+.todo {
   background: #fff;
-  max-width: 400px;
-  width: 100%;
+  /* max-width: 400px; */
+  /* width: 100%; */
   margin: 0 20px 0 auto;
   padding: 25px;
   border-radius: 5px;
   box-shadow: 0px 10px 15px rgba(0,0,0,0.1);
 }
 
-.wrapper header {
+.todo header {
   display: flex;
   width: 100%;
   align-items: center;
   justify-content: space-between;
 }
 
-.wrapper h1 {
+.todo h1 {
   font-size: 30px;
   font-weight: 600;
   margin-right: 120px;
@@ -116,7 +121,7 @@ body {
   pointer-events: auto;
 }
 
-.wrapper .inputField {
+.todo .inputField {
   margin: 20px 0;
   width: 100%;
   display: flex;
@@ -159,7 +164,7 @@ body {
   opacity: 1;
 }
 
-.wrapper .todoList {
+.todo .todoList {
   height: 350px;
   overflow-y: auto;
   margin-top: 20px;
@@ -200,23 +205,18 @@ body {
 
 
 
-.notelines {
-  margin: 0 auto 0 20px;
-  background: url(./notepad-lines.png) repeat;
+.notepad {
+  /* height: 559px; */
+  /* width: 400px; */
+  overflow-y: auto;
+  background: url(./images/notepad-lines.png) repeat;
   background-color: whitesmoke;
   background-size: 100%;
   border-radius: 5px;
-}
-
-.notepad {
+  margin: 0 auto 0 20px;
   padding: 5px 10px 5px 55px;
   font-size: 16px;
   outline: none;
-}
-
-.notelines, .notepad {
-  width: 400px;
-  height: 555px;
 }
 
 
