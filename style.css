@@ -52,7 +52,7 @@ body {
 
 .theme-block #theme + label::before {
   content: '';
-  background: url(./images/icon-moon.svg);
+  background: url(./icon-moon.svg);
   display: block;
   width: 26px;
   height: 26px;
@@ -60,7 +60,7 @@ body {
 }
 
 .theme-block #theme:checked + label::before {
-  background: url(./images/icon-sun.svg);
+  background: url(./icon-sun.svg);
 }
 
 
@@ -215,7 +215,7 @@ body {
   /* height: 559px; */
   /* width: 400px; */
   overflow-y: auto;
-  background: url(./images/notepad-lines.png) repeat;
+  background: url(./notepad-lines.png) repeat;
   background-color: whitesmoke;
   background-size: 100%;
   border-radius: 5px;
