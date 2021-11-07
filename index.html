@@ -4,12 +4,12 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>OneDay [ Testing ]</title>
+        <title>One Day [ Beta Test 2 ]</title>
         <link rel="stylesheet" href="style.css">
         <script src="https://kit.fontawesome.com/66978bd54f.js" crossorigin="anonymous"></script>
     </head>
 
-    <body class="theme-light" onload="initClock(); notepad()">
+    <body class="theme-light" onload="initClock()">
 
         <div class="flex-container">
             <div class="date-time">
@@ -34,10 +34,10 @@
 
         <div class="flex-container">
     
-            <div class="wrapper">
+            <div class="todo">
                 <header>
                     <h1>To Do</h1>
-                    <span><span class="pendingNumb"></span> tasks left</span>
+                    <span><span class="remainingTasks"></span> tasks left</span>
                     <button class="deleteAll"><i class="fas fa-sync-alt"></i></button>
                 </header>
     
@@ -51,10 +51,8 @@
                 </div>
             </div>
 
-            <div class="notelines">
-                <div class="notepad" id="notepad" contenteditable="true">
-    
-                </div>
+            <div class="notepad" id="notepad" contenteditable="true">
+                <!-- Data comes from local storage -->
             </div>
 
         </div>
